@@ -10,7 +10,7 @@ namespace Lab01
     internal class Triangle : Figure
     {
         float size;
-
+       
 
         public void Set()
         {
@@ -20,12 +20,19 @@ namespace Lab01
         {
         }
         public PointF ptest = new PointF();
-        public override bool test(float x, float y)
-        {
-
-            return true;
-        }
         public PointF[] p = new PointF[3];
+        public override bool test(float x, float y)
+        { 
+
+            float a = (p[0].X - x) * (p[1].Y - p[0].Y) - (p[1].X - p[0].X) * (p[0].Y - y);
+            float b = (p[1].X - x) * (p[2].Y - p[1].Y) - (p[2].X - p[1].X) * (p[1].Y - y);
+            float c = (p[2].X - x) * (p[0].Y - p[2].Y) - (p[0].X - p[2].X) * (p[2].Y - y);
+
+            if(a > 0 && b > 0 && c > 0) return true;
+            if(a < 0 && b < 0 && c < 0) return true;
+            else return false;
+        }
+       
         public override void draw(Graphics g)
         {
             Set();

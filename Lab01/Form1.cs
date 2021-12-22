@@ -93,6 +93,18 @@ namespace Lab01
             pictureBoxMain.Invalidate();
         }
 
+        private void buttonDel_Click(object sender, EventArgs e)
+        {
+            int i = 0;
+            while (i < lst.Count)
+            { 
+                if(lst[i].selected == true){ lst.RemoveAt(i); listBoxMain.Items.RemoveAt(i);}
+                i++;
+            }
+            pictureBoxMain.Invalidate();
+        }
+
+
         private void listBoxMain_SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (Figure fig in lst)
@@ -106,17 +118,6 @@ namespace Lab01
                 }
                 catch { }
 
-            }
-            pictureBoxMain.Invalidate();
-        }
-
-        private void buttonDel_Click(object sender, EventArgs e)
-        {
-            int i = 0;
-            while (i < lst.Count)
-            { 
-                if(lst[i].selected == true){ lst.RemoveAt(i); listBoxMain.Items.RemoveAt(i);}
-                i++;
             }
             pictureBoxMain.Invalidate();
         }
