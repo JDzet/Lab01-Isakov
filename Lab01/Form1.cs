@@ -99,8 +99,13 @@ namespace Lab01
                 fig.selected = false;
             for (int i = lst.Count - 1; i >= 0; i--)
             {
-                Figure fig = lst[Convert.ToInt32(listBoxMain.SelectedIndex)];
-                fig.selected = true;
+                try
+                {
+                    Figure fig = lst[Convert.ToInt32(listBoxMain.SelectedIndex)];
+                    fig.selected = true;
+                }
+                catch { }
+
             }
             pictureBoxMain.Invalidate();
         }
@@ -110,7 +115,7 @@ namespace Lab01
             int i = 0;
             while (i < lst.Count)
             { 
-                if(lst[i].selected == true) lst.RemoveAt(i);
+                if(lst[i].selected == true){ lst.RemoveAt(i); listBoxMain.Items.RemoveAt(i);}
                 i++;
             }
             pictureBoxMain.Invalidate();
